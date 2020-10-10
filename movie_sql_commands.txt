@@ -1,0 +1,40 @@
+create table theater(
+	theaterid number(6) primary key,
+	theatername varchar2(15),
+	theatercity varchar2(15),
+	managername varchar2(15),
+	managercontact number(10)
+);
+
+
+create table screen(
+	screenid number(6) primary key,
+	screenname varchar2(15),
+	noofrows number(6),
+	noofcolumns number(6),
+	theaterid number(6),
+	foreign key(theaterid) references theater(theaterid)
+);
+
+create table login(
+username varchar2(15),
+password varchar2(15)
+);
+
+create sequence screen_seq start with 1000;
+create sequence theater_seq start with 2000;
+
+insert into theater values(theater_seq.nextval , 'inox', 'hyd','rahul', 1234567890);
+insert into theater values(theater_seq.nextval , 'shiva', 'hyd', 'nivas' , 1234567890);
+
+insert into screen values(screen_seq.nextval, 'screen1' , 10, 10,2001);
+insert into screen values(screen_seq.nextval, 'screen2' , 9 , 9  ,2001);
+insert into screen values(screen_seq.nextval, 'screen1' ,  8, 8,2002);
+insert into screen values(screen_seq.nextval, 'screen2' , 7, 7,2002);
+
+insert into login values('admin','admin');
+
+commit;
+
+
+.............................................................................................
