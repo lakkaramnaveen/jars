@@ -1,0 +1,35 @@
+create table owner(
+	ownerid number(6) primary key,
+	ownername varchar2(40),
+	ownerlocation varchar2(100)
+);
+
+create table tenant(
+	tenantid number(6) primary key,
+	tenantname varchar2(40),
+	tenantproper varchar2(100),
+	tenantnumber number(10),
+	tenantaadhar number(12),
+	tenantrent number(6),
+	tenantlocation varchar2(40),
+	ownerid  number(6),
+	foreign key(ownerid) references owner(ownerid)
+);
+
+create table ownerlogin(
+username varchar2(15),
+password varchar2(15)
+);
+
+create sequence tenant_seq start with 10;
+create sequence owner_seq start with 100;
+
+insert into owner values( owner_seq.nextval , 'Nikhil Kumar', '1-34 Kapu colony Kotarmoor Armoor Nizambad');
+
+insert into tenant values( tenant_seq.nextval , 'Vinay', '1-10/1, Colony, Warangal, Near famous temple', 1234567890, 111123238899, 2000, 'First floor 1', 101 );
+insert into tenant values( tenant_seq.nextval , 'Chary', '1-10/1, Colony, Warangal, Near famous temple', 1234567890, 111123238899, 3500, 'First floor 2' , 101 );
+insert into tenant values( tenant_seq.nextval , 'Naresh', '1-10/1, Colony, Warangal, Near famous temple', 1234567890, 111123238899, 12000, 'Vishaka showroom', 101 );
+
+insert into ownerlogin values('admin','admin');
+
+commit;
